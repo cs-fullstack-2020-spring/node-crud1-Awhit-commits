@@ -4,6 +4,7 @@ let router = express.Router();
 router.use(express.json());
 
 let studentCollection = require('../models/StudentSchema')
+let teacherCollection = require('../models/TeacherSchema')
 //Student Endpoints
 
 //Create student
@@ -63,7 +64,7 @@ router.delete('/student/:studentEmail',(req,res)=>{
             res.send(errors);
         }
         else{
-            res.send(`Student Deleted`);
+            res.send(`Student with the email of ${req.params.studentEmail} was Deleted`);
         }
     })
 })
@@ -71,24 +72,72 @@ router.delete('/student/:studentEmail',(req,res)=>{
 
 //Teacher Endpoints
 
+//Create A Teacher
 router.post('/teacher',(req,res)=>{
-    res.send(`Teacher was created`)
-})
+    // res.send(`Teacher was created`)
+    teacherCollection.create(req.body,(errors)=>{
+        if(errors){
+            res.send(errors);
+        }
+        else{
+            res.send(`Teacher Created`);
+        }
+    })
 
+
+})
+//Find All Teachers in database
 router.get('/teacher',(req,res)=>{
-    res.send(`All Teacher`)
+    // res.send(`All Teachers`)
+    teacherCollection.find({},(errors,results)=>{
+        if(errors){
+            res.send(errors);
+        }
+        else{
+            res.send(results);
+        }
+    })
+
 })
 
-router.get('/teacher/:email',(req,res)=>{
-    res.send('Teacher found by email')
+//Find a Specifc Teacher by Email
+
+router.get('/teacher/:teacherEmail',(req,res)=>{
+    // res.send('Teacher found by email')
+    teacherCollection.findOne({teacherEmail:req.params.teacherEmail},(errors,results)=>{
+        if(errors){
+            res.send(errors);
+        }
+        else{
+            res.send(results);
+        }
+    })
 })
 
-router.put('/teacher/:email',(req,res)=>{
-    res.send('Teacher updated by email')
+//Update Teacher by Email
+router.put('/teacher/:teacherEmail',(req,res)=>{
+    // res.send('Teacher updated by email')
+    teacherCollection.findOneAndUpdate({teacherEmail:req.params.teacherEmail},req.body,(errors,results)=>{
+        if(errors){
+            res.send(errors);
+        }
+        else{
+            res.send(`Teacher Updated!`);
+        }
+    })
 })
+//Delete Teacher by Email
 
-router.delete('/teacher/:email',(req,res)=>{
-    res.send('Teacher deleted by email')
+router.delete('/teacher/:teacherEmail',(req,res)=>{
+    // res.send('Teacher deleted by email')
+    teacherCollection.findOneAndDelete({teacherEmail:req.params.teacherEmail},(errors,results)=>{
+        if(errors){
+            res.send(errors);
+        }
+        else{
+            res.send(`Teacher with the email of ${req.params.teacherEmail} was deleted!`);
+        }
+    })
 })
 
 
