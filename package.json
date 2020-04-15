@@ -1,0 +1,26 @@
+{
+  "name": "node-crud1-Awhit-commits",
+  "version": "1.0.0",
+  "description": "Create a backend web service for managing Students and Teachers and maintain them in MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs-fullstack-2020-spring/node-crud1-Awhit-commits.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs-fullstack-2020-spring/node-crud1-Awhit-commits/issues"
+  },
+  "homepage": "https://github.com/cs-fullstack-2020-spring/node-crud1-Awhit-commits#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.9",
+    "nodemon": "^2.0.3"
+  }
+}
