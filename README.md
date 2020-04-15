@@ -1,5 +1,8 @@
 # Node.js - CRUD backend web service
 
+### Nice work! Don't forget to comment.
+### Score : 5/5
+
 Create a backend web service for managing Students and Teachers and maintain them in MongoDB
 
 Each Student should have the following properties:
